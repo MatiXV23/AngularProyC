@@ -1,0 +1,27 @@
+<div class="card">
+    <form #createPersonForm="ngForm" (ngSubmit)="handleClick($event)" >
+
+        <label for="username">username</label><br>
+        <input #username="ngModel" type="text" name="username" [(ngModel)]="this.user().username" required minlength="2" maxlength="15" appInvalidName="bob" existingName><br><br>
+
+        <div class="error-message">
+            @if (username.errors) {
+                {{username.errors | json}}
+            }
+        </div>
+
+        <label for="roles">Roles</label><br>
+        <select name="roles" id="roles" [(ngModel)]="this.user().roles" multiple required>
+            @for (item of this.roles(); track $index) {
+                <option [value]="item">{{item}}</option>
+            }
+        </select>
+
+
+        <input type="submit" value="Guardar" [disabled]="createPersonForm.invalid || this.disabled()">
+    </form>
+</div>
+
+<div class="error-message">
+    {{this.errorMsg()}}
+</div>

@@ -1,0 +1,11 @@
+<div class="card">
+    <form>
+        <label for="username">username</label><br>
+        <input type="text" name="username" id="username" [(ngModel)]="this.username"><br><br>
+
+        <label for="password">password</label><br>
+        <input type="password" name="password" id="password" [(ngModel)]="this.password"><br><br>
+
+        <input type="button" value="Ingresar" (click)="handleClick()">
+    </form>
+</div>

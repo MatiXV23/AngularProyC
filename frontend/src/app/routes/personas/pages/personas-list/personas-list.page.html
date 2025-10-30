@@ -1,0 +1,28 @@
+ <table>
+    <caption>
+        computed: {{this.usernames() | uppercase}}
+    </caption>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Roles</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @for (persona of this.personas(); track $index) {
+            <tr>
+                <td>{{persona.id_persona}}</td>
+                <td>{{persona.username}}</td>
+                <td>{{persona.roles.join(", ")}}</td>
+                <td><a [routerLink]="['/personas', 'edit', persona.id_persona]" class="cursor-pointer">Editar</a></td>
+            </tr>
+        }
+        @empty {
+            <tr>
+                <td colspan="3">No hay nada de nadita</td>
+            </tr>
+        }
+    </tbody>
+</table>

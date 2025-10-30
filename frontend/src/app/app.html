@@ -1,0 +1,45 @@
+
+<header>
+  <div class="header-content">
+    <div class="left">
+      <img
+        src="https://www.ucu.edu.uy/plantillas/images/logo_ucu.svg"
+        alt="Logo UCU"
+        style="height: 30px"
+      />
+    </div>
+
+    <div id="center" class="center">nombre pantalla</div>
+    <div id="right" class="right">username</div>
+  </div>
+</header>
+
+<div class="container">
+  <nav>
+    <ul>
+      <li>
+        <a id="menu-lista-usuarios" routerLink="home">Home</a>
+      </li>
+      <li>
+        <a id="menu-lista-usuarios" routerLink="personas">Listar personas</a>
+      </li>
+      <li>
+        <a id="menu-crear-usuario" routerLink="personas/crear">Crear persona</a>
+      </li>
+      <li>
+        <a id="menu-mis-tareas" href="#">Mis tareas</a>
+      </li>
+      <li>
+        <a id="menu-mis-tareas" href="#">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+
+  <main id="main" class="w-full h-full">
+    <router-outlet/>
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 - Desarrollo web y Mobile</p>
+</footer>
