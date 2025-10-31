@@ -43,4 +43,8 @@ export class PersonasModifyPage{
     }
     
   }
+
+  async reload(event: any){
+    this.user.reload()
+  }
 }

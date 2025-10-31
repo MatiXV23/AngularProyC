@@ -1,1 +1,8 @@
-<app-personas-form (save)="this.handleClick($event)" [errorMsg]="this.errorMsg()" [disable]="this.disabled()" [roles]="this.roles()" [user]="this.user.value()!"/>
+@if (!this.user.hasValue()) {
+    <p>Cargando</p>
+}
+
+@else {
+    <app-personas-form (save)="this.handleClick($event)" [errorMsg]="this.errorMsg()" [disable]="this.disabled()" [roles]="this.roles()" [user]="this.user.value()"/>
+    <input type="button" value="Reload" (click)="this.reload($event)">
+}

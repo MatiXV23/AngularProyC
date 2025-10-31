@@ -8,6 +8,7 @@
         <th>Username</th>
         <th>Roles</th>
         <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -16,7 +17,8 @@
                 <td>{{persona.id_persona}}</td>
                 <td>{{persona.username}}</td>
                 <td>{{persona.roles.join(", ")}}</td>
-                <td><a [routerLink]="['/personas', 'edit', persona.id_persona]" class="cursor-pointer">Editar</a></td>
+                <td><a [routerLink]="['/personas', 'edit', persona.id_persona]"><button class="cursor-pointer border-1 p-1 rounded-sm bg-gray-200">Editar</button></a></td>
+                <td><button (click)="this.deleteUser($event, persona.id_persona)" class="cursor-pointer border-1 p-1 rounded-sm bg-gray-200">Borrar</button></td>
             </tr>
         }
         @empty {

@@ -30,7 +30,12 @@
         <a id="menu-mis-tareas" href="#">Mis tareas</a>
       </li>
       <li>
-        <a id="menu-mis-tareas" href="#">LogOut</a>
+        @if (this.isLogged()) {
+          <p id="menu-cerrar-sesion" class="cursor-pointer" (click)="this.authService.logOut()">Cerrar sesion</p>
+        }
+        @else {
+          <a id="menu-ingresar"routerLink="login">Ingresar</a>
+        }
       </li>
     </ul>
   </nav>

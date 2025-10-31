@@ -21,6 +21,11 @@ export class PersonasListPage implements OnInit{
     const cant = this.personas().length
     console.log('Cant: ', cant)
   })
+
+  async deleteUser(event: any, id_persona: number) {
+
+  }
+
   async ngOnInit() {
     const personas = await this.personaService.getPersonas()
     this.personas.set(personas)
