@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { firstValueFrom, throwIfEmpty } from 'rxjs';
 import { Credenciales } from '../types/credenciales';
+import { MainStore } from '../stores/main.store';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +10,21 @@ import { Credenciales } from '../types/credenciales';
 export class AuthService {
   private httpClient = inject(HttpClient)
 
+  private mainStore = inject(MainStore)
+
   private User: any = null
 
-  private token:string | undefined = ''
 
   isLogged = signal<boolean>(false)
 
-  getToken(){ 
-    if (!this.token) { this.token = localStorage.getItem("token") ?? '' }
-    return this.token
-  }
 
   async logIn(credenciales: Credenciales){
     try {
-      const token = await firstValueFrom(this.httpClient.post<{token: string}>('http://localhost:2000/auth/', credenciales))
+      const {token} = await firstValueFrom(this.httpClient.post<{token: string}>('http://localhost:2000/auth/', credenciales))
       console.log("token: ", token)
-      this.token = token.token
+      this.mainStore.token = token
       this.isLogged.set(true)
-      localStorage.setItem("token", token.token)
+      localStorage.setItem("token", token)
     }
     catch (e) {
       throw e
@@ -36,7 +34,7 @@ export class AuthService {
   async logOut(){
     this.isLogged.set(false)
     console.log("log out")
-    this.token = undefined;
+    this.mainStore.token = undefined;
     localStorage.removeItem("token")
   }
 
