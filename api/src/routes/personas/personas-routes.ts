@@ -16,7 +16,7 @@ const personasRoutes: FastifyPluginAsyncTypebox = async function (fastify) {
           200: Type.Array(Persona),
         },
       },
-      // onRequest: [fastify.checkIsAdmin],
+      onRequest: [fastify.checkIsAdmin],
     },
     async function () {
       return findAll();
