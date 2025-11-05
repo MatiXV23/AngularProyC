@@ -10,7 +10,16 @@
     </div>
 
     <div id="center" class="center">nombre pantalla</div>
-    <div id="right" class="right">username</div>
+    <div id="right" class="right">
+      @let user = this.user();
+      @if (!user) {
+        anonimo
+      }
+      @else {
+        {{user.username}}
+      }
+      
+  </div>
   </div>
 </header>
 

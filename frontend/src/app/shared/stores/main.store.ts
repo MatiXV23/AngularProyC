@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Persona } from '../types/persona';
 
 @Injectable({
@@ -6,7 +6,7 @@ import { Persona } from '../types/persona';
 })
 export class MainStore {
   token: string | undefined = ''
-  user?: Persona
+  user = signal<Persona | undefined>(undefined) 
 
 
   getToken(){ 

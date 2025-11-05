@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './routes/home/home.page';
 import { LogInPage } from './routes/log-in/log-in.page';
+import { isLoggedGuard } from './core/guards/is-logged-guard';
 
 
 
@@ -19,6 +20,7 @@ export const routes: Routes = [
 
     {
         path: 'personas',
+        canActivate: [isLoggedGuard],
         loadComponent: async () => (await import('./routes/personas/pages/personas-list/personas-list.page')).PersonasListPage,
         title: 'Personas',
     },
